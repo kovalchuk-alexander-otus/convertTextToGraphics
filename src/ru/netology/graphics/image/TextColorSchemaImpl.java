@@ -2,7 +2,7 @@ package ru.netology.graphics.image;
 
 public class TextColorSchemaImpl implements TextColorSchema {
 
-    private char[] palette;
+    private final char[] palette;
 
     public TextColorSchemaImpl() {
         this(new char[]{'▇', '●', '◉', '◍', '◎', '○', '☉', '◌', '-'});
