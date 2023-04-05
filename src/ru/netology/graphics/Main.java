@@ -1,5 +1,6 @@
 package ru.netology.graphics;
 
+import ru.netology.graphics.image.TextColorSchemaImpl;
 import ru.netology.graphics.image.TextGraphicsConverter;
 import ru.netology.graphics.image.TextGraphicsConverterImpl;
 import ru.netology.graphics.server.GServer;
@@ -13,6 +14,9 @@ public class Main {
         server.start(); // Запускаем
 
         // Или то же, но с выводом на экран:
+//        converter.setTextColorSchema(new TextColorSchemaImpl(
+//                new char[]{'W', 'Q', 'R', 'T', 'I', 'w', 'q', 'r', 't', 'i', '-', '.'})
+//        );
 //        converter.setMaxHeight(10);
 //        converter.setMaxRatio(1.43);
 //        System.out.printf("%5d %5d %5.2f %n",

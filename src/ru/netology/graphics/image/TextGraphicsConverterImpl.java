@@ -13,6 +13,11 @@ public class TextGraphicsConverterImpl implements TextGraphicsConverter {
     private int maxWidth;
     private int maxHeight;
     private double maxRatio;
+    private TextColorSchema schema;
+
+    public TextGraphicsConverterImpl() {
+        this.schema = new TextColorSchemaImpl();
+    }
 
     @Override
     public String convert(String url) throws IOException, BadImageSizeException {
@@ -26,7 +31,7 @@ public class TextGraphicsConverterImpl implements TextGraphicsConverter {
         // Чтобы получить ширину картинки, вызовите img.getWidth(), высоту - img.getHeight()
         int width = img.getWidth();
         int height = img.getHeight();
-        double ratio = (double) width / height;
+        double ratio = Math.max((double) width / height, (double) height / width);
 //        System.out.println(width + " - " + height + " - " + ratio);
 
         if (this.maxRatio > 0 && ratio > this.maxRatio) {
@@ -103,7 +108,6 @@ public class TextGraphicsConverterImpl implements TextGraphicsConverter {
         // получить степень белого пикселя (int color выше) и по ней
         // получить соответствующий символ c. Логикой превращения цвета
         // в символ будет заниматься другой объект, который мы рассмотрим ниже
-        TextColorSchema schema = new TextColorSchemaImpl();
         int[] pixel = new int[3];
         StringBuilder picture = new StringBuilder();
 
@@ -148,7 +152,7 @@ public class TextGraphicsConverterImpl implements TextGraphicsConverter {
 
     @Override
     public void setTextColorSchema(TextColorSchema schema) {
-
+        this.schema = schema;
     }
 
     public int getMaxWidth() {
